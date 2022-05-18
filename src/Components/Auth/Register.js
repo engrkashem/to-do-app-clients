@@ -119,7 +119,7 @@ const Register = () => {
                         </label>
                     </div>
 
-                    <input className='btn btn-outline btn-primary w-1/2 mx-auto block font-bold' type="submit" value='LOGIN' />
+                    <input className='btn btn-outline btn-primary w-1/2 mx-auto block font-bold' type="submit" value='REGISTER' />
                 </form>
                 {errorMessage}
                 <p className=' font-semibold'>Already Registered? <NavLink to={'/login'} className=' text-primary'>Please Login</NavLink></p>
