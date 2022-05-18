@@ -11,7 +11,8 @@ const Home = () => {
     const [success, setSuccess] = useState(false);
     const [strikethroug, setStrikethroug] = useState('');
 
-    const url = `http://localhost:5000/task`;
+    // const url = `http://localhost:5000/task`;
+    const url = `https://blooming-sands-39632.herokuapp.com/task`;
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -23,7 +24,8 @@ const Home = () => {
 
     const onSubmit = data => {
         // const { name, description } = data;
-        const url = `http://localhost:5000/task`;
+        // const url = `http://localhost:5000/task`;
+        const url = `https://blooming-sands-39632.herokuapp.com/task`;
         fetch(url, {
             method: 'POST',
             headers: {
@@ -47,7 +49,8 @@ const Home = () => {
     const deleteBtn = id => {
         const proceed = window.confirm('Are You Sure !! Want to Delete the Task??');
         if (proceed) {
-            const url = `http://localhost:5000/task/${id}`;
+            // const url = `http://localhost:5000/task/${id}`;
+            const url = `https://blooming-sands-39632.herokuapp.com/task/${id}`;
             fetch(url, {
                 method: 'DELETE',
             })
