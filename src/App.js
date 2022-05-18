@@ -6,10 +6,12 @@ import Home from './Components/Home/Home';
 import Login from './Components/Auth/Login';
 import Register from './Components/Auth/Register';
 import NotFound from './Components/NotFound/NotFound';
+import Navbar from './Components/Home/Navbar';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App lg:w-max-lg lg:px-20">
+      <Navbar></Navbar>
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/home' element={<Home />}></Route>
