@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { NavLink, useNavigate } from 'react-router-dom';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
 const Login = () => {
@@ -9,26 +9,36 @@ const Login = () => {
 
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+
     const navigate = useNavigate();
 
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        const { email, password } = data;
+        signInWithEmailAndPassword(email, password);
+    };
 
     const resetPassword = () => {
 
     }
 
     useEffect(() => {
-        if (gUser) {
+        if (gUser || user) {
             navigate('/');
         }
-    }, [gUser, navigate])
+    }, [gUser, user, navigate])
 
     let errorMessage;
-    if (gError) {
+    if (gError || error) {
         errorMessage = <p className='text-rose-500'>{gError?.message}</p>;
     }
 
-    if (gLoading) {
+    if (gLoading || loading) {
         return <div className=' flex justify-center items-center'>
             <button className="btn btn-primary loading">loading</button>
         </div>;

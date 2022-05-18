@@ -5,16 +5,11 @@ import { NavLink } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const Navbar = () => {
-    const [user, loading] = useAuthState(auth);
+    const [user] = useAuthState(auth);
     const logout = () => {
         signOut(auth);
     };
 
-    if (loading) {
-        return <div className=' flex justify-center items-center'>
-            <button className="btn btn-primary loading">loading</button>
-        </div>;
-    }
     const links = <>
         <li className=' font-semibold'><NavLink to={'/'}>HOME</NavLink></li>
         {
