@@ -54,11 +54,11 @@ const Register = () => {
                                 value: true,
                                 message: 'Name is Required'
                             }
-                        })} type="text" placeholder="Your Email" className="input input-bordered w-full " />
+                        })} type="text" placeholder="Your Name" className="input input-bordered w-full " />
                         <label className="label">
                             <span className="label-text-alt">
-                                {errors.email?.type === 'required' && <span
-                                    className="label-text-alt text-rose-500">{errors.email.message}
+                                {errors.name?.type === 'required' && <span
+                                    className="label-text-alt text-rose-500">{errors.name.message}
                                 </span>}
                             </span>
                         </label>
