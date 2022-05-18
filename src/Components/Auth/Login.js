@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
@@ -17,6 +17,12 @@ const Login = () => {
 
     }
 
+    useEffect(() => {
+        if (gUser) {
+            navigate('/');
+        }
+    }, [gUser, navigate])
+
     let errorMessage;
     if (gError) {
         errorMessage = <p className='text-rose-500'>{gError?.message}</p>;
@@ -28,10 +34,6 @@ const Login = () => {
         </div>;
     }
 
-    if (gUser) {
-        navigate('/');
-    }
-
     return (
         <div className="card w-sm lg:w-1/2 bg-base-100 shadow-xl mx-auto">
             <div className="card-body">
@@ -39,14 +41,14 @@ const Login = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control ">
                         <label className="label">
-                            <span className="label-text">Name</span>
+                            <span className="label-text">Email</span>
                         </label>
                         <input {...register("email", {
                             required: {
                                 value: true,
                                 message: 'Email is Required'
                             },
-                            attern: {
+                            pattern: {
                                 value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
                                 message: 'Enter a valid Email'
                             }
